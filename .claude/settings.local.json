@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat > *)",
+      "Bash(mkdir -p /Users/ken/Desktop/Gas/public && ls /Users/ken/Desktop/Gas/public)",
+      "Bash(node -e \"require\\('gsap'\\); require\\('gsap/ScrollTrigger'\\); console.log\\('gsap ok'\\)\")",
+      "Bash(npx tsc *)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/magicui/marquee\" --yes)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/aceternity/sparkles-text\" --yes)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/magicui/animated-beam\" --yes)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/aceternity/spotlight\" --yes)",
+      "Bash(wait)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/magicui/shine-border\" --yes)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/magicui/word-rotate\" --yes)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/magicui/number-ticker\" --yes)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/magicui/text-reveal\" --yes)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/magicui/border-beam\" --yes)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/magicui/animated-gradient-text\" --yes)",
+      "Bash(awk 'NR>=143 && NR<=152 {printf \"%d: %s\\\\n\", NR, $0}' /Users/ken/Desktop/Gas/src/components/sections/contact.tsx)",
+      "Bash(awk 'NR>=47 && NR<=100 {printf \"%d: %s\\\\n\", NR, $0}' /Users/ken/Desktop/Gas/src/components/sections/contact.tsx)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/magicui/magic-card\" --yes)",
+      "Bash(node -e \"const tw = require\\('/Users/ken/Desktop/Gas/node_modules/tailwindcss/package.json'\\); console.log\\(tw.version\\)\")",
+      "Read(//Users/ken/Desktop/**)",
+      "Read(//Users/ken/Downloads/**)",
+      "Bash(npm install *)",
+      "Bash(npx --no-install tsc --noEmit)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}

@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 142 71% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 142 76% 36%;
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 7%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142 71% 45%;
+    --primary-foreground: 222 47% 5%;
+
+    --secondary: 217 33% 12%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 12%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 16%;
+    --input: 217 33% 16%;
+    --ring: 142 71% 45%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+  }
+
+  /* All h1 elements use Poppins (--font-display) */
+  h1 {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  ::selection {
+    @apply bg-wes-500/30 text-foreground;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-wes-500/40 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-wes-500/70;
+  }
+  .theme {
+    --animate-marquee: marquee var(--duration) linear infinite;
+    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+    --animate-shine: shine var(--duration) infinite linear;
+    --animate-gradient: gradient 8s linear infinite;
+    --animate-border-beam: border-beam calc(var(--duration)*1s) infinite linear;
+  }
+  .maplibregl-popup-content {
+    @apply bg-transparent! shadow-none! p-0! rounded-none!;
+  }
+  .maplibregl-popup-tip {
+    @apply hidden!;
+  }
+}
+
+@layer components {
+  /* Glass panel — premium frosted card */
+  .glass {
+    @apply relative bg-white/60 dark:bg-white/[0.04] backdrop-blur-xl
+           border border-white/40 dark:border-white/[0.08]
+           shadow-[0_8px_30px_rgb(0,0,0,0.05)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)];
+  }
+  .glass-strong {
+    @apply relative bg-white/80 dark:bg-ink-900/70 backdrop-blur-2xl
+           border border-white/60 dark:border-white/[0.08]
+           shadow-[0_20px_60px_rgb(0,0,0,0.08)] dark:shadow-[0_20px_60px_rgb(0,0,0,0.5)];
+  }
+
+  /* Solid brand text colours */
+  .text-gradient-eco {
+    @apply text-wes-500;
+  }
+  .text-gradient-hero {
+    @apply text-wes-700 dark:text-white;
+  }
+
+  /* Grid background helper */
+  .bg-grid {
+    background-image: linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Radial spotlight mask */
+  .mask-radial {
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+
+  /* Eco glow ring used behind hero objects */
+  .glow-eco {
+    box-shadow:
+      0 0 0 1px rgba(34, 197, 94, 0.2),
+      0 10px 40px -10px rgba(34, 197, 94, 0.45),
+      0 30px 80px -30px rgba(22, 163, 74, 0.55);
+  }
+
+  /* Magnetic button base */
+  .btn-magnetic {
+    @apply relative inline-flex items-center justify-center gap-2
+           rounded-full font-medium tracking-tight
+           transition-all duration-300 ease-out
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wes-500
+           disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  /* Section padding */
+  .section {
+    @apply relative py-24 md:py-32;
+  }
+
+  /* Animated noise overlay */
+  .noise {
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.04;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  /* ── Modern outline icons ───────────────────────────────────────────────
+     Lucide React attaches .lucide to every SVG icon. Setting stroke-width
+     here overrides the default (2) globally — no per-icon changes needed.
+     CSS class rules beat SVG presentation attributes, so this always wins. */
+  .lucide {
+    stroke-width: 1.5;
+  }
+
+  .pause-anim:hover * {
+    animation-play-state: paused;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .clip-arrow {
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+  }
+  .shadow-eco {
+    box-shadow: 0 20px 60px -20px rgba(22, 163, 74, 0.45);
+  }
+}
+
+@theme inline {
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes shine {
+  0% {
+    background-position: 0% 0%;
+    }
+  50% {
+    background-position: 100% 100%;
+    }
+  to {
+    background-position: 0% 0%;
+    }
+  }
+  @keyframes gradient {
+  to {
+    backgroundPosition: var(--bg-size) 0;
+    }
+  }
+  @keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+    }
+  }
+}
