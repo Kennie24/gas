@@ -28,15 +28,15 @@ export function TestimonialsSplit({ testimonials }: TestimonialsSplitProps) {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-6 pb-20">
+    <div className="w-full max-w-5xl mx-auto px-5 pb-16 sm:px-6 md:pb-20">
       <div
-        className="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-center cursor-pointer group"
+        className="relative grid cursor-pointer grid-cols-1 items-center gap-8 md:grid-cols-[1fr_auto] md:gap-16 group"
         onClick={nextTestimonial}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
         {/* Left: Quote Content */}
-        <div className="space-y-8">
+        <div className="space-y-5 md:space-y-8">
           {/* Company tag */}
           <AnimatePresence mode="wait">
             <motion.div
@@ -45,7 +45,7 @@ export function TestimonialsSplit({ testimonials }: TestimonialsSplitProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-wes-500"
+              className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] text-wes-500 sm:text-xs sm:tracking-[0.2em]"
             >
               <span className="w-8 h-px bg-wes-500/60" />
               {active.company}
@@ -61,7 +61,7 @@ export function TestimonialsSplit({ testimonials }: TestimonialsSplitProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="text-2xl md:text-3xl lg:text-4xl font-light leading-[1.35] tracking-tight text-foreground"
+                className="text-xl font-light leading-[1.35] tracking-tight text-foreground sm:text-2xl md:text-3xl lg:text-4xl"
               >
                 &ldquo;{active.quote}&rdquo;
               </motion.blockquote>
@@ -88,7 +88,7 @@ export function TestimonialsSplit({ testimonials }: TestimonialsSplitProps) {
         </div>
 
         {/* Right: Photo */}
-        <div className="relative w-full md:w-48 h-64 md:h-72 shrink-0">
+        <div className="relative h-56 w-full shrink-0 sm:h-64 md:h-72 md:w-48">
           <AnimatePresence mode="wait">
             <motion.div
               key={active.id}
@@ -98,7 +98,7 @@ export function TestimonialsSplit({ testimonials }: TestimonialsSplitProps) {
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0"
             >
-              <div className="w-full h-full rounded-2xl overflow-hidden border border-border/50 shadow-eco">
+              <div className="h-full w-full overflow-hidden rounded-xl border border-border/50 shadow-eco sm:rounded-2xl">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={active.image}
@@ -107,7 +107,7 @@ export function TestimonialsSplit({ testimonials }: TestimonialsSplitProps) {
                 />
               </div>
               {/* Subtle green tint overlay */}
-              <div className="absolute inset-0 rounded-2xl bg-wes-500/5 pointer-events-none" />
+              <div className="pointer-events-none absolute inset-0 rounded-xl bg-wes-500/5 sm:rounded-2xl" />
             </motion.div>
           </AnimatePresence>
 
@@ -126,7 +126,7 @@ export function TestimonialsSplit({ testimonials }: TestimonialsSplitProps) {
         </div>
 
         {/* Progress dots */}
-        <div className="absolute -bottom-10 left-0 flex items-center gap-3">
+        <div className="absolute -bottom-8 left-0 flex items-center gap-3 md:-bottom-10">
           {testimonials.map((_, index) => (
             <button
               key={index}

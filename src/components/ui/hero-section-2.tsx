@@ -74,7 +74,7 @@ export function HeroSection2({
   }, [reduceMotion, slides.length]);
 
   return (
-    <section className="relative isolate mt-[164px] flex min-h-svh flex-col overflow-hidden bg-background md:mt-[188px] lg:mt-[184px]">
+    <section className="relative isolate mt-[150px] flex min-h-[calc(100svh-150px)] flex-col overflow-hidden bg-background md:mt-[188px] md:min-h-[calc(100svh-188px)] lg:mt-[184px] lg:min-h-[calc(100svh-184px)]">
       {/* ── FULL-WIDTH HERO IMAGE SLIDER ─────────────────────────────────── */}
       <div className="absolute inset-0 -z-10 bg-black" aria-hidden>
         {slides.map((src, index) => (
@@ -96,10 +96,10 @@ export function HeroSection2({
         <div className="absolute inset-0 bg-black/10" />
       </div>
 
-      <div className="relative flex min-h-svh w-full flex-col">
+      <div className="relative flex min-h-[calc(100svh-150px)] w-full flex-col md:min-h-[calc(100svh-188px)] lg:min-h-[calc(100svh-184px)]">
 
         {/* ── CONTENT PANEL ───────────────────────────────────────────────── */}
-        <div className="relative z-10 flex min-h-svh flex-1 flex-col justify-between px-6 pb-10 pt-16 text-white sm:px-10 md:pt-20 lg:px-14 xl:px-20">
+        <div className="relative z-10 flex min-h-[calc(100svh-150px)] flex-1 flex-col justify-between px-5 pb-8 pt-10 text-white sm:px-10 md:min-h-[calc(100svh-188px)] md:pt-20 lg:min-h-[calc(100svh-184px)] lg:px-14 xl:px-20">
 
           {/* Logo — only rendered when prop is provided */}
           {logo && (
@@ -123,13 +123,13 @@ export function HeroSection2({
           )}
 
           {/* Main content */}
-          <div className="my-auto flex flex-col gap-6 py-10 lg:py-16">
+          <div className="my-auto flex flex-col gap-4 py-8 sm:gap-6 lg:py-16">
             {slogan && (
               <motion.p
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-[#F6E91A]"
+                className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#F6E91A] sm:text-xs sm:tracking-[0.2em]"
               >
                 {slogan}
               </motion.p>
@@ -139,7 +139,7 @@ export function HeroSection2({
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-              className="max-w-5xl font-display text-[2.4rem] font-semibold leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-[4.25rem] [&_em]:not-italic [&_em]:text-[#F6E91A]"
+              className="max-w-5xl font-display text-[clamp(2rem,12vw,3.15rem)] font-semibold leading-[1.02] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-[4.25rem] [&_em]:not-italic [&_em]:text-[#F6E91A]"
             >
               {title}
             </motion.h1>
@@ -157,7 +157,7 @@ export function HeroSection2({
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
-                className="max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
+                className="max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg"
               >
                 {subtitle}
               </motion.p>
@@ -171,7 +171,7 @@ export function HeroSection2({
               >
                 <Link
                   href={callToAction.href}
-                  className="group inline-flex items-center gap-2 rounded-full bg-[#F6E91A] px-7 py-3.5 text-sm font-semibold text-zinc-900 shadow-lg shadow-[#F6E91A]/30 transition-all duration-200 hover:bg-[#ede213] hover:shadow-[#F6E91A]/40 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6E91A]"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#F6E91A] px-5 py-3 text-xs font-semibold text-zinc-900 shadow-lg shadow-[#F6E91A]/30 transition-all duration-200 hover:bg-[#ede213] hover:shadow-[#F6E91A]/40 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6E91A] sm:px-7 sm:py-3.5 sm:text-sm"
                 >
                   {callToAction.text}
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -221,7 +221,7 @@ export function HeroSection2({
         </div>
 
         {slides.length > 1 && (
-          <div className="absolute bottom-10 left-6 z-20 flex items-center gap-2 rounded-full border border-white/20 bg-black/25 px-3 py-2 backdrop-blur-md sm:left-10 lg:left-14 xl:left-20">
+          <div className="absolute bottom-5 left-5 z-20 flex items-center gap-2 rounded-full border border-white/20 bg-black/25 px-3 py-2 backdrop-blur-md sm:bottom-10 sm:left-10 lg:left-14 xl:left-20">
             {slides.map((_, index) => (
               <button
                 key={index}

@@ -56,10 +56,10 @@ export function Hero() {
 
       >
         {/* Secondary CTA + trust strip */}
-        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3 sm:gap-4">
           <div className="flex flex-wrap items-center gap-3">
             <MagneticButton strength={0.25}>
-              <Button asChild variant="glass" size="lg" className="rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20">
+              <Button asChild variant="glass" size="md" className="rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20 sm:h-14 sm:px-8 sm:text-base">
                 <Link href="/investors">
                   <Handshake className="h-4 w-4" />
                   Become a Partner
@@ -69,7 +69,7 @@ export function Hero() {
             </MagneticButton>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-white/80">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] text-white/80 sm:gap-x-5 sm:text-xs">
             <span className="inline-flex items-center gap-1.5">
               <ShieldCheck className="h-4 w-4 text-[#F6E91A]" />
               Certified clean cooking
@@ -87,14 +87,14 @@ export function Hero() {
       </HeroSection2>
 
       {/* ── Stats panel ─────────────────────────────────────────────────── */}
-      <div className="container -mt-6 pb-16 md:pb-24 relative z-10">
+      <div className="container relative z-10 -mt-4 pb-12 md:-mt-6 md:pb-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          <div className="relative grid grid-cols-2 lg:grid-cols-4 overflow-hidden rounded-3xl bg-[#EBCA30]">
+          <div className="relative grid grid-cols-2 overflow-hidden rounded-2xl bg-[#EBCA30] sm:rounded-3xl lg:grid-cols-4">
             <BorderBeam
               size={180}
               duration={10}
@@ -105,16 +105,16 @@ export function Hero() {
             {HERO_STATS.map((s, i) => (
               <div
                 key={s.label}
-                className="relative p-6 md:p-8 border-b border-black/15 last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0 [&:nth-child(2)]:border-b lg:[&:nth-child(2)]:border-b-0"
+                className="relative p-4 sm:p-6 md:p-8 border-b border-black/15 last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0 [&:nth-child(2)]:border-b lg:[&:nth-child(2)]:border-b-0"
               >
-                <div className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-zinc-950 tabular-nums">
+                <div className="font-display text-2xl font-semibold tracking-tight text-zinc-950 tabular-nums sm:text-4xl md:text-5xl">
                   <NumberTicker
                     value={s.value}
-                    className="text-zinc-950 font-display text-4xl md:text-5xl font-semibold"
+                    className="text-zinc-950 font-display text-2xl font-semibold sm:text-4xl md:text-5xl"
                   />
                   <span>{s.suffix}</span>
                 </div>
-                <p className="mt-2 text-sm font-medium text-zinc-900/75">{s.label}</p>
+                <p className="mt-1.5 text-xs font-medium leading-tight text-zinc-900/75 sm:mt-2 sm:text-sm">{s.label}</p>
                 {i < HERO_STATS.length - 1 && (
                   <span className="pointer-events-none absolute -right-px top-1/2 hidden h-12 -translate-y-1/2 w-px bg-gradient-to-b from-transparent via-black/25 to-transparent lg:block" />
                 )}

@@ -27,12 +27,12 @@ export const FlowSection: React.FC<FlowSectionProps> = ({
   <section
     data-flow-section
     aria-label={ariaLabel}
-    className={cx('relative min-h-screen w-full overflow-hidden', className)}
+    className={cx('relative min-h-[auto] w-full overflow-hidden md:min-h-screen', className)}
   >
     <div
       data-flow-inner
       className={cx(
-        'flow-art-container relative flex min-h-screen w-full flex-col justify-between gap-6 px-[4vw] pt-[clamp(7rem,11vw,10rem)] pb-[4vw]',
+        'flow-art-container relative flex min-h-[auto] w-full flex-col justify-between gap-5 px-5 py-12 md:min-h-screen md:gap-6 md:px-[4vw] md:pt-[clamp(7rem,11vw,10rem)] md:pb-[4vw]',
         'will-change-transform',
       )}
       style={{ transformOrigin: 'bottom left', ...style }}
@@ -57,18 +57,27 @@ const FlowArt: React.FC<FlowArtProps> = ({
 }) => {
   const containerRef = useRef<HTMLElement>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const update = () => setReducedMotion(mq.matches);
+    const motionMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const screenMq = window.matchMedia('(max-width: 767px)');
+    const update = () => {
+      setReducedMotion(motionMq.matches);
+      setIsSmallScreen(screenMq.matches);
+    };
     update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
+    motionMq.addEventListener('change', update);
+    screenMq.addEventListener('change', update);
+    return () => {
+      motionMq.removeEventListener('change', update);
+      screenMq.removeEventListener('change', update);
+    };
   }, []);
 
   useGSAP(
     () => {
-      if (!containerRef.current || reducedMotion) return;
+      if (!containerRef.current || reducedMotion || isSmallScreen) return;
 
       const sections = Array.from(
         containerRef.current.querySelectorAll<HTMLElement>('[data-flow-section]'),
@@ -117,7 +126,7 @@ const FlowArt: React.FC<FlowArtProps> = ({
         triggers.forEach((trigger) => trigger.kill());
       };
     },
-    { scope: containerRef, dependencies: [childCount(children), reducedMotion] },
+    { scope: containerRef, dependencies: [childCount(children), reducedMotion, isSmallScreen] },
   );
 
   return (

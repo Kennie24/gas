@@ -25,7 +25,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "flex flex-col gap-5 mb-14 md:mb-20",
+        "mb-10 flex flex-col gap-4 md:mb-20 md:gap-5",
         align === "center" ? "items-center text-center" : "items-start text-left",
         className
       )}
@@ -46,7 +46,7 @@ export function SectionHeading({
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, delay: 0.05 }}
         className={cn(
-          "font-display text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-balance",
+          "font-display text-[2.15rem] font-semibold tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl",
           align === "center" ? "max-w-3xl" : "max-w-4xl"
         )}
       >
@@ -59,7 +59,7 @@ export function SectionHeading({
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
           className={cn(
-            "text-base md:text-lg text-muted-foreground text-balance leading-relaxed",
+            "text-sm leading-relaxed text-muted-foreground text-balance sm:text-base md:text-lg",
             align === "center" ? "max-w-2xl" : "max-w-2xl"
           )}
         >
