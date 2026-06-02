@@ -33,7 +33,9 @@ export interface HeroSection2Props {
   /** Primary CTA */
   callToAction?: CallToAction;
   /** Background image for the right panel */
-  backgroundImage: string;
+  backgroundImage?: string;
+  /** Optional image slider for the right panel / mobile background */
+  backgroundImages?: string[];
   /** Optional contact info row at the bottom */
   contactInfo?: ContactInfo;
   /** Optional children rendered below the CTA */
@@ -50,17 +52,54 @@ export function HeroSection2({
   subtitle,
   callToAction,
   backgroundImage,
+  backgroundImages,
   contactInfo,
   children,
 }: HeroSection2Props) {
   const reduceMotion = useReducedMotion();
+  const slides = React.useMemo(
+    () => (backgroundImages?.length ? backgroundImages : backgroundImage ? [backgroundImage] : []),
+    [backgroundImage, backgroundImages]
+  );
+  const [activeSlide, setActiveSlide] = React.useState(0);
+
+  React.useEffect(() => {
+    if (slides.length <= 1 || reduceMotion) return;
+
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % slides.length);
+    }, 5200);
+
+    return () => window.clearInterval(timer);
+  }, [reduceMotion, slides.length]);
 
   return (
-    <section className="relative isolate flex min-h-svh flex-col overflow-hidden bg-background">
-      <div className="relative flex min-h-svh w-full flex-col lg:flex-row">
+    <section className="relative isolate mt-[164px] flex min-h-svh flex-col overflow-hidden bg-background md:mt-[188px] lg:mt-[184px]">
+      {/* ── FULL-WIDTH HERO IMAGE SLIDER ─────────────────────────────────── */}
+      <div className="absolute inset-0 -z-10 bg-black" aria-hidden>
+        {slides.map((src, index) => (
+          <motion.img
+            key={src}
+            src={src}
+            alt=""
+            loading={index === 0 ? "eager" : "lazy"}
+            className="absolute inset-0 h-full w-full object-contain"
+            initial={false}
+            animate={{
+              opacity: activeSlide === index ? 1 : 0,
+              scale: activeSlide === index ? 1.06 : 1,
+            }}
+            transition={{ duration: reduceMotion ? 0 : 1.15, ease: "easeOut" }}
+          />
+        ))}
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-black/10" />
+      </div>
 
-        {/* ── LEFT PANEL ──────────────────────────────────────────────────── */}
-        <div className="relative z-10 flex flex-1 flex-col justify-between px-6 pb-10 pt-44 sm:px-10 lg:max-w-[55%] lg:px-14 md:pt-64 xl:px-20">
+      <div className="relative flex min-h-svh w-full flex-col">
+
+        {/* ── CONTENT PANEL ───────────────────────────────────────────────── */}
+        <div className="relative z-10 flex min-h-svh flex-1 flex-col justify-between px-6 pb-10 pt-16 text-white sm:px-10 md:pt-20 lg:px-14 xl:px-20">
 
           {/* Logo — only rendered when prop is provided */}
           {logo && (
@@ -90,7 +129,7 @@ export function HeroSection2({
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-wes-500"
+                className="text-xs font-semibold uppercase tracking-[0.2em] text-[#F6E91A]"
               >
                 {slogan}
               </motion.p>
@@ -100,7 +139,7 @@ export function HeroSection2({
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-              className="font-display text-[2.4rem] font-semibold leading-[1.06] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem] [&_em]:not-italic [&_em]:text-wes-500"
+              className="max-w-5xl font-display text-[2.4rem] font-semibold leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-[4.25rem] [&_em]:not-italic [&_em]:text-[#F6E91A]"
             >
               {title}
             </motion.h1>
@@ -110,7 +149,7 @@ export function HeroSection2({
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
               transition={{ duration: 0.55, delay: 0.3, ease: "easeOut" }}
-              className="block h-[3px] w-20 origin-left rounded-full bg-wes-500"
+              className="block h-[3px] w-20 origin-left rounded-full bg-[#F6E91A]"
             />
 
             {subtitle && (
@@ -118,7 +157,7 @@ export function HeroSection2({
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
-                className="max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg"
+                className="max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
               >
                 {subtitle}
               </motion.p>
@@ -157,7 +196,7 @@ export function HeroSection2({
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.6, ease: "easeOut" }}
-              className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border/50 pt-6 text-xs text-muted-foreground"
+              className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/20 pt-6 text-xs text-white/70"
             >
               {contactInfo.website && (
                 <a href={`https://${contactInfo.website}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 transition-colors hover:text-wes-500">
@@ -181,33 +220,21 @@ export function HeroSection2({
           )}
         </div>
 
-        {/* ── RIGHT PANEL — clipped image (desktop only) ───────────────────── */}
-        <div className="relative hidden lg:block lg:flex-1">
-          <motion.div
-            initial={reduceMotion ? false : { clipPath: "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)" }}
-            animate={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }}
-            transition={{ duration: 1.1, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-            className="absolute inset-0 will-change-[clip-path]"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={backgroundImage}
-              alt=""
-              aria-hidden
-              loading="eager"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent" />
-          </motion.div>
-        </div>
-
-        {/* ── Mobile background ────────────────────────────────────────────── */}
-        <div className="absolute inset-0 -z-10 lg:hidden" aria-hidden>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={backgroundImage} alt="" className="h-full w-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-background/65" />
-        </div>
+        {slides.length > 1 && (
+          <div className="absolute bottom-10 left-6 z-20 flex items-center gap-2 rounded-full border border-white/20 bg-black/25 px-3 py-2 backdrop-blur-md sm:left-10 lg:left-14 xl:left-20">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => setActiveSlide(index)}
+                aria-label={`Show hero image ${index + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  activeSlide === index ? "w-8 bg-[#F6E91A]" : "w-2 bg-white/60 hover:bg-white"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

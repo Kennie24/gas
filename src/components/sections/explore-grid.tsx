@@ -54,20 +54,22 @@ const TABS: TabMedia[] = [
 
 export function ExploreGrid() {
   return (
-    <FeatureShowcase
-      eyebrow="Explore WES GAS"
-      title="One platform. Every clean energy answer."
-      description="Dive deeper into the parts of WES GAS that matter most to you — products, PAYGo financing, measurable impact, partners and contact pathways are all structured for fast discovery."
-      stats={["120,000+ households", "76 districts", "9 branches", "20 points of sale"]}
-      steps={STEPS}
-      tabs={TABS}
-      defaultTab="products"
-      panelMinHeight={680}
-      primaryHref="/products"
-      primaryLabel="Explore products"
-      secondaryHref="/contact"
-      secondaryLabel="Contact WES GAS"
-      className="section relative"
-    />
+    <div className="bg-[#1D8B43]">
+      <FeatureShowcase
+        eyebrow="Explore WES GAS"
+        title="One platform. Every clean energy answer."
+        description="Dive deeper into the parts of WES GAS that matter most to you — products, PAYGo financing, measurable impact, partners and contact pathways are all structured for fast discovery."
+        stats={["120,000+ households", "76 districts", "9 branches", "20 points of sale"]}
+        steps={STEPS}
+        tabs={TABS}
+        defaultTab="products"
+        panelMinHeight={680}
+        primaryHref="/products"
+        primaryLabel="Explore products"
+        secondaryHref="/contact"
+        secondaryLabel="Contact WES GAS"
+        className="section relative !bg-[#1D8B43]"
+      />
+    </div>
   );
 }

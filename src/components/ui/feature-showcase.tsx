@@ -77,10 +77,10 @@ export function FeatureShowcase({
   const initial = defaultTab ?? (tabs[0]?.value ?? "tab-0");
 
   return (
-    <section id="explore" className={cn("w-full bg-background text-foreground", className)}>
+    <section id="explore" className={cn("w-full bg-[#1D8B43] text-white", className)}>
       <div className="container mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 md:grid-cols-12 md:py-20 lg:gap-14">
         <div className="md:col-span-6">
-          <Badge className="mb-6 border-[#1D8B43]/30 bg-[#1D8B43]/5 text-[#1D8B43]">
+          <Badge className="mb-6 border-white/25 bg-white/10 text-white">
             {eyebrow}
           </Badge>
 
@@ -89,7 +89,7 @@ export function FeatureShowcase({
           </h2>
 
           {description ? (
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
               {description}
             </p>
           ) : null}
@@ -97,7 +97,7 @@ export function FeatureShowcase({
           {stats.length > 0 && (
             <div className="mt-6 flex flex-wrap gap-2">
               {stats.map((stat) => (
-                <Badge key={stat} className="border-border bg-muted text-foreground">
+                <Badge key={stat} className="border-white/20 bg-white/10 text-white">
                   {stat}
                 </Badge>
               ))}
@@ -107,11 +107,11 @@ export function FeatureShowcase({
           <div className="mt-10 max-w-xl">
             <Accordion type="single" collapsible defaultValue={steps[0]?.id} className="w-full">
               {steps.map((step) => (
-                <AccordionItem key={step.id} value={step.id}>
-                  <AccordionTrigger className="text-left text-base font-semibold">
+                <AccordionItem key={step.id} value={step.id} className="border-white/20">
+                  <AccordionTrigger className="text-left text-base font-semibold text-white hover:text-[#F6E91A] hover:no-underline">
                     {step.title}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                  <AccordionContent className="text-sm leading-relaxed text-white/72">
                     {step.text}
                   </AccordionContent>
                 </AccordionItem>
@@ -122,7 +122,7 @@ export function FeatureShowcase({
               <Button asChild size="lg">
                 <Link href={primaryHref}>{primaryLabel}</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border border-border bg-transparent">
+              <Button asChild size="lg" variant="outline" className="border border-white/30 bg-white/10 text-white hover:bg-white hover:text-[#1D8B43]">
                 <Link href={secondaryHref}>{secondaryLabel}</Link>
               </Button>
             </div>
@@ -131,7 +131,7 @@ export function FeatureShowcase({
 
         <div className="md:col-span-6">
           <Card
-            className="relative overflow-hidden rounded-2xl border border-border bg-card/40 p-0 shadow-sm"
+            className="relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-0 shadow-2xl shadow-black/20"
             style={{ height: panelMinHeight, minHeight: panelMinHeight }}
           >
             <Tabs defaultValue={initial} className="relative h-full w-full">
@@ -157,12 +157,12 @@ export function FeatureShowcase({
               </div>
 
               <div className="pointer-events-auto absolute inset-x-0 bottom-4 z-10 flex w-full justify-center px-4">
-                <TabsList className="flex max-w-full gap-2 overflow-x-auto rounded-xl border border-border bg-background/80 p-1 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+                <TabsList className="flex max-w-full gap-2 overflow-x-auto rounded-xl border border-white/20 bg-black/30 p-1 text-white backdrop-blur">
                   {tabs.map((tab) => (
                     <TabsTrigger
                       key={tab.value}
                       value={tab.value}
-                      className="rounded-lg px-4 py-2 data-[state=active]:bg-[#1D8B43] data-[state=active]:text-white"
+                      className="rounded-lg px-4 py-2 text-white/75 data-[state=active]:bg-[#F6E91A] data-[state=active]:text-zinc-900"
                     >
                       {tab.label}
                     </TabsTrigger>

@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { WesLogo } from "@/components/ui/wes-logo";
@@ -17,6 +17,8 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+
+  const aboutActive = pathname === "/about" || pathname?.startsWith("/team") || pathname?.startsWith("/investors") || pathname?.startsWith("/impact");
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -38,14 +40,73 @@ export function Navbar() {
           className={cn(
             "relative flex items-center justify-center gap-4 px-4 md:px-8 transition-all duration-500",
             scrolled
-              ? "glass-strong h-14 shadow-lg"
-              : "h-16 bg-black/30 backdrop-blur-md border-y border-white/10"
+              ? "h-14 border-y border-black/15 bg-[#EBCA30] shadow-lg"
+              : "h-16 border-y border-black/15 bg-[#EBCA30]"
           )}
         >
           {/* desktop links */}
           <ul className="hidden md:flex items-center justify-center gap-0.5 lg:gap-1">
             {NAV_LINKS.map((l) => {
-              const active = pathname === l.href || (l.href !== "/" && pathname?.startsWith(l.href));
+              const active = l.href === "/about"
+                ? aboutActive
+                : pathname === l.href || (l.href !== "/" && pathname?.startsWith(l.href));
+
+              if (l.href === "/about") {
+                return (
+                  <li key={l.href} className="group relative">
+                    <Link
+                      href={l.href}
+                      className={cn(
+                        "group/link relative inline-flex h-9 items-center gap-1 rounded-full px-2.5 text-xs font-medium transition-colors lg:px-4 lg:text-sm",
+                        scrolled
+                          ? active ? "text-zinc-950" : "text-zinc-900/75 hover:text-zinc-950"
+                          : active ? "text-zinc-950" : "text-zinc-900/75 hover:text-zinc-950"
+                      )}
+                    >
+                      <span className="relative z-10">{l.label}</span>
+                      <ChevronDown className="relative z-10 h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
+                      <span
+                        className={cn(
+                          "absolute inset-0 -z-0 rounded-full bg-wes-500/10 transition-all duration-300",
+                          active
+                            ? "scale-100 bg-black/10 opacity-100"
+                            : "scale-90 bg-black/10 opacity-0 group-hover/link:scale-100 group-hover/link:opacity-100"
+                        )}
+                      />
+                    </Link>
+
+                    <div className="invisible absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 translate-y-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-2 group-hover:opacity-100">
+                      <div className="overflow-hidden rounded-sm border border-white/10 bg-background/95 p-2 shadow-2xl shadow-black/20 backdrop-blur-xl dark:bg-ink-950/95">
+                        <Link
+                          href="/about"
+                          className="block rounded-sm px-3 py-2.5 text-sm font-medium text-foreground hover:bg-wes-500/10 hover:text-wes-600 dark:hover:text-wes-400"
+                        >
+                          About WES GAS
+                        </Link>
+                        <Link
+                          href="/team"
+                          className="block rounded-sm px-3 py-2.5 text-sm font-medium text-foreground hover:bg-wes-500/10 hover:text-wes-600 dark:hover:text-wes-400"
+                        >
+                          Team
+                        </Link>
+                        <Link
+                          href="/impact"
+                          className="block rounded-sm px-3 py-2.5 text-sm font-medium text-foreground hover:bg-wes-500/10 hover:text-wes-600 dark:hover:text-wes-400"
+                        >
+                          Impact
+                        </Link>
+                        <Link
+                          href="/investors"
+                          className="block rounded-sm px-3 py-2.5 text-sm font-medium text-foreground hover:bg-wes-500/10 hover:text-wes-600 dark:hover:text-wes-400"
+                        >
+                          Investors
+                        </Link>
+                      </div>
+                    </div>
+                  </li>
+                );
+              }
+
               return (
                 <li key={l.href}>
                   <Link
@@ -53,8 +114,8 @@ export function Navbar() {
                     className={cn(
                       "group relative inline-flex h-9 items-center rounded-full px-2.5 lg:px-4 text-xs lg:text-sm font-medium transition-colors",
                       scrolled
-                        ? active ? "text-wes-600 dark:text-wes-400" : "text-muted-foreground hover:text-foreground"
-                        : active ? "text-white" : "text-white/75 hover:text-white"
+                        ? active ? "text-zinc-950" : "text-zinc-900/75 hover:text-zinc-950"
+                        : active ? "text-zinc-950" : "text-zinc-900/75 hover:text-zinc-950"
                     )}
                   >
                     <span className="relative z-10">{l.label}</span>
@@ -62,8 +123,8 @@ export function Navbar() {
                       className={cn(
                         "absolute inset-0 -z-0 rounded-full bg-wes-500/10 transition-all duration-300",
                         active
-                          ? "scale-100 opacity-100"
-                          : "scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100"
+                          ? "scale-100 bg-black/10 opacity-100"
+                          : "scale-90 bg-black/10 opacity-0 group-hover:scale-100 group-hover:opacity-100"
                       )}
                     />
                   </Link>
@@ -82,7 +143,7 @@ export function Navbar() {
             <button
               aria-label="Open menu"
               onClick={() => setOpen((v) => !v)}
-              className={cn("grid h-10 w-10 place-items-center rounded-full border backdrop-blur", scrolled ? "border-border bg-background/50" : "border-white/20 bg-white/10 text-white")}
+              className={cn("grid h-10 w-10 place-items-center rounded-full border backdrop-blur", "border-black/20 bg-black/5 text-zinc-950")}
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -106,7 +167,9 @@ export function Navbar() {
               </div>
               <ul className="flex flex-col">
                 {NAV_LINKS.map((l) => {
-                  const active = pathname === l.href || (l.href !== "/" && pathname?.startsWith(l.href));
+                  const active = l.href === "/about"
+                    ? aboutActive
+                    : pathname === l.href || (l.href !== "/" && pathname?.startsWith(l.href));
                   return (
                     <li key={l.href}>
                       <Link
@@ -120,6 +183,44 @@ export function Navbar() {
                         <span>{l.label}</span>
                         <span className="text-wes-500">→</span>
                       </Link>
+
+                      {l.href === "/about" && (
+                        <div className="ml-4 mt-1 space-y-1">
+                          <Link
+                            href="/team"
+                            onClick={() => setOpen(false)}
+                            className={cn(
+                              "flex items-center justify-between rounded-sm px-3 py-2.5 text-sm font-medium hover:bg-wes-500/10",
+                              pathname?.startsWith("/team") ? "text-wes-600 dark:text-wes-400 bg-wes-500/10" : "text-muted-foreground"
+                            )}
+                          >
+                            <span>Team</span>
+                            <span className="text-wes-500">→</span>
+                          </Link>
+                          <Link
+                            href="/impact"
+                            onClick={() => setOpen(false)}
+                            className={cn(
+                              "flex items-center justify-between rounded-sm px-3 py-2.5 text-sm font-medium hover:bg-wes-500/10",
+                              pathname?.startsWith("/impact") ? "text-wes-600 dark:text-wes-400 bg-wes-500/10" : "text-muted-foreground"
+                            )}
+                          >
+                            <span>Impact</span>
+                            <span className="text-wes-500">→</span>
+                          </Link>
+                          <Link
+                            href="/investors"
+                            onClick={() => setOpen(false)}
+                            className={cn(
+                              "flex items-center justify-between rounded-sm px-3 py-2.5 text-sm font-medium hover:bg-wes-500/10",
+                              pathname?.startsWith("/investors") ? "text-wes-600 dark:text-wes-400 bg-wes-500/10" : "text-muted-foreground"
+                            )}
+                          >
+                            <span>Investors</span>
+                            <span className="text-wes-500">→</span>
+                          </Link>
+                        </div>
+                      )}
                     </li>
                   );
                 })}

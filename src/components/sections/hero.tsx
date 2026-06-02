@@ -45,14 +45,21 @@ export function Hero() {
         title={heading}
         subtitle={`WANA Energy Solutions delivers affordable LPG, solar systems, solar freezers and electric pressure cookers to homes, businesses and rural communities across ${COMPANY.coverage} — with daily Pay-As-You-Go financing built for every household.`}
         callToAction={{ text: "GET STARTED", href: "/contact" }}
-        backgroundImage="/hero.gif"
+        backgroundImages={[
+          "/hero.gif",
+          "/LPG Cylinders.png",
+          "/Solar Home Systems.png",
+          "/Solar Freezers.png",
+          "/Electric Pressure Cookers.png",
+          "/pay as you go.png",
+        ]}
 
       >
         {/* Secondary CTA + trust strip */}
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap items-center gap-3">
             <MagneticButton strength={0.25}>
-              <Button asChild variant="glass" size="lg" className="rounded-full">
+              <Button asChild variant="glass" size="lg" className="rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20">
                 <Link href="/investors">
                   <Handshake className="h-4 w-4" />
                   Become a Partner
@@ -62,17 +69,17 @@ export function Hero() {
             </MagneticButton>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-white/80">
             <span className="inline-flex items-center gap-1.5">
-              <ShieldCheck className="h-4 w-4 text-wes-500" />
+              <ShieldCheck className="h-4 w-4 text-[#F6E91A]" />
               Certified clean cooking
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <Leaf className="h-4 w-4 text-wes-500" />
+              <Leaf className="h-4 w-4 text-[#F6E91A]" />
               ESG-aligned operations
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <Zap className="h-4 w-4 text-wes-500" />
+              <Zap className="h-4 w-4 text-[#F6E91A]" />
               Daily PayGo financing
             </span>
           </div>
@@ -87,29 +94,29 @@ export function Hero() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          <div className="relative grid grid-cols-2 lg:grid-cols-4 overflow-hidden rounded-3xl bg-wes-600">
+          <div className="relative grid grid-cols-2 lg:grid-cols-4 overflow-hidden rounded-3xl bg-[#EBCA30]">
             <BorderBeam
               size={180}
               duration={10}
-              colorFrom="#22C55E"
-              colorTo="#16A34A"
+              colorFrom="#ffffff"
+              colorTo="#1D8B43"
               borderWidth={1}
             />
             {HERO_STATS.map((s, i) => (
               <div
                 key={s.label}
-                className="relative p-6 md:p-8 border-b border-white/20 last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0 [&:nth-child(2)]:border-b lg:[&:nth-child(2)]:border-b-0"
+                className="relative p-6 md:p-8 border-b border-black/15 last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0 [&:nth-child(2)]:border-b lg:[&:nth-child(2)]:border-b-0"
               >
-                <div className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-white tabular-nums">
+                <div className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-zinc-950 tabular-nums">
                   <NumberTicker
                     value={s.value}
-                    className="text-white font-display text-4xl md:text-5xl font-semibold"
+                    className="text-zinc-950 font-display text-4xl md:text-5xl font-semibold"
                   />
                   <span>{s.suffix}</span>
                 </div>
-                <p className="mt-2 text-sm text-white/70">{s.label}</p>
+                <p className="mt-2 text-sm font-medium text-zinc-900/75">{s.label}</p>
                 {i < HERO_STATS.length - 1 && (
-                  <span className="pointer-events-none absolute -right-px top-1/2 hidden h-12 -translate-y-1/2 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent lg:block" />
+                  <span className="pointer-events-none absolute -right-px top-1/2 hidden h-12 -translate-y-1/2 w-px bg-gradient-to-b from-transparent via-black/25 to-transparent lg:block" />
                 )}
               </div>
             ))}

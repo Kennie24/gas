@@ -52,9 +52,6 @@ export const NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/products", label: "Products" },
   { href: "/paygo", label: "PAYGo / PACo" },
-  { href: "/impact", label: "Impact" },
-  { href: "/investors", label: "Investors" },
-  { href: "/team", label: "Team" },
   { href: "/news", label: "News" },
   { href: "/contact", label: "Contact" },
 ];

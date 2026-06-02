@@ -35,9 +35,9 @@ const PRODUCTS = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-12 overflow-hidden bg-[#1D8B43]">
+    <footer className="relative mt-12 overflow-hidden bg-[#EBCA30]">
       {/* Top accent line */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/30" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-black/20" />
 
       {/* Animated background paths — rendered above bg, below content */}
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -55,31 +55,31 @@ export function Footer() {
           {/* Brand + Mission */}
           <div className="lg:col-span-5">
             <Image
-              src="/logo white.png"
+              src="/logo.png"
               alt="WANA Energy Solutions — WES GAS"
               width={160}
               height={56}
               style={{ width: "auto", height: "56px" }}
               priority
             />
-            <p className="mt-5 max-w-md text-sm text-white/75 leading-relaxed">
+            <p className="mt-5 max-w-md text-sm text-zinc-900/75 leading-relaxed">
               {COMPANY.legalName} ({COMPANY.tradingName}) — {COMPANY.mission}
             </p>
 
             <div className="mt-6 space-y-2.5 text-sm">
               <p className="flex items-start gap-2.5">
-                <MapPin className="mt-0.5 h-4 w-4 text-white/80 shrink-0" />
-                <span className="text-white/70">{COMPANY.address}</span>
+                <MapPin className="mt-0.5 h-4 w-4 text-zinc-950/80 shrink-0" />
+                <span className="text-zinc-900/75">{COMPANY.address}</span>
               </p>
               <p className="flex items-center gap-2.5">
-                <Phone className="h-4 w-4 text-white/80 shrink-0" />
-                <a href={`tel:${COMPANY.phoneRaw}`} className="text-white/70 hover:text-white">
+                <Phone className="h-4 w-4 text-zinc-950/80 shrink-0" />
+                <a href={`tel:${COMPANY.phoneRaw}`} className="text-zinc-900/75 hover:text-zinc-950">
                   {COMPANY.phone}
                 </a>
               </p>
               <p className="flex items-center gap-2.5">
-                <Mail className="h-4 w-4 text-white/80 shrink-0" />
-                <a href={`mailto:${COMPANY.email}`} className="text-white/70 hover:text-white">
+                <Mail className="h-4 w-4 text-zinc-950/80 shrink-0" />
+                <a href={`mailto:${COMPANY.email}`} className="text-zinc-900/75 hover:text-zinc-950">
                   {COMPANY.email}
                 </a>
               </p>
@@ -98,7 +98,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="grid h-10 w-10 place-items-center rounded-xl border border-white/30 text-white/80 hover:border-white hover:text-white transition-colors"
+                  className="grid h-10 w-10 place-items-center rounded-xl border border-black/25 text-zinc-950/75 transition-colors hover:border-black hover:text-zinc-950"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -108,7 +108,7 @@ export function Footer() {
 
           {/* Links */}
           <div className="lg:col-span-2">
-            <p className="text-xs font-semibold uppercase tracking-widest text-white">
+            <p className="text-xs font-semibold uppercase tracking-widest text-zinc-950">
               Company
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -116,7 +116,7 @@ export function Footer() {
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
+                    className="text-sm text-zinc-900/75 transition-colors hover:text-zinc-950"
                   >
                     {l.label}
                   </Link>
@@ -126,7 +126,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <p className="text-xs font-semibold uppercase tracking-widest text-white">
+            <p className="text-xs font-semibold uppercase tracking-widest text-zinc-950">
               Products
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -134,7 +134,7 @@ export function Footer() {
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
+                    className="text-sm text-zinc-900/75 transition-colors hover:text-zinc-950"
                   >
                     {l.label}
                   </Link>
@@ -145,10 +145,10 @@ export function Footer() {
 
           {/* Newsletter */}
           <div className="lg:col-span-3">
-            <p className="text-xs font-semibold uppercase tracking-widest text-white">
+            <p className="text-xs font-semibold uppercase tracking-widest text-zinc-950">
               Stay in the loop
             </p>
-            <p className="mt-3 text-sm text-white/70">
+            <p className="mt-3 text-sm text-zinc-900/75">
               Quarterly notes on clean energy access, climate impact and PayGo
               innovations.
             </p>
@@ -159,35 +159,35 @@ export function Footer() {
               <input
                 type="email"
                 placeholder="you@example.com"
-                className="h-12 w-full rounded-full border border-white/30 bg-white/10 pl-4 pr-32 text-sm text-white placeholder:text-white/50 outline-none focus:border-white/60 focus:ring-2 focus:ring-white/20"
+                className="h-12 w-full rounded-full border border-black/25 bg-white/25 pl-4 pr-32 text-sm text-zinc-950 placeholder:text-zinc-900/45 outline-none focus:border-black/50 focus:ring-2 focus:ring-black/10"
               />
               <Button
                 type="submit"
                 variant="ghost"
                 size="sm"
-                className="absolute right-1.5 top-1.5 rounded-full bg-white text-wes-700 hover:bg-white/90 font-semibold"
+                className="absolute right-1.5 top-1.5 rounded-full bg-[#1D8B43] font-semibold text-white hover:bg-[#166b35]"
               >
                 Subscribe
                 <Send className="h-3.5 w-3.5" />
               </Button>
             </form>
-            <p className="mt-4 inline-flex items-center gap-2 text-[11px] text-white/60">
-              <Leaf className="h-3.5 w-3.5 text-white/80" />
+            <p className="mt-4 inline-flex items-center gap-2 text-[11px] text-zinc-900/65">
+              <Leaf className="h-3.5 w-3.5 text-[#1D8B43]" />
               Climate-positive operations · Carbon reporting available
             </p>
           </div>
         </div>
 
         {/* Bottom strip */}
-        <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-white/20 pt-6 text-xs text-white">
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-black/20 pt-6 text-xs text-zinc-950">
           <p>
             © {new Date().getFullYear()} {COMPANY.legalName}. All rights reserved. Trading as {COMPANY.tradingName}.
           </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-            <Link href="#" className="hover:text-white">Privacy</Link>
-            <Link href="#" className="hover:text-white">Terms</Link>
-            <Link href="#" className="hover:text-white">Cookies</Link>
-            <a href={COMPANY.websiteUrl} className="hover:text-white">
+            <Link href="#" className="hover:text-zinc-700">Privacy</Link>
+            <Link href="#" className="hover:text-zinc-700">Terms</Link>
+            <Link href="#" className="hover:text-zinc-700">Cookies</Link>
+            <a href={COMPANY.websiteUrl} className="hover:text-zinc-700">
               {COMPANY.website}
             </a>
           </div>
