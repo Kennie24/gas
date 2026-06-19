@@ -100,7 +100,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           </p>
 
           <div className="my-10 flex flex-col gap-4">
-            <Button asChild className="w-full rounded-lg bg-[#F6E91A] py-6 text-xs font-bold uppercase tracking-[0.18em] text-zinc-950 hover:bg-[#F6E91A]/90">
+            <Button asChild className="w-full rounded-lg bg-[#EBCA30] py-6 text-xs font-bold uppercase tracking-[0.18em] text-zinc-950 hover:bg-[#d9b829]">
               <Link href="/contact">
                 Request quote <ArrowUpRight className="h-4 w-4" />
               </Link>
@@ -192,7 +192,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <p className="mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground">
               WES GAS combines clean cooking, renewable power and affordable payment models to make clean energy accessible and affordable to all Ugandans.
             </p>
-            <Button asChild className="mt-10 rounded-xl bg-[#F6E91A] text-zinc-950 hover:bg-[#F6E91A]/90">
+            <Button asChild className="mt-10 rounded-xl bg-[#EBCA30] text-zinc-950 hover:bg-[#d9b829]">
               <Link href="/contact">Talk to WES GAS <ArrowUpRight className="h-4 w-4" /></Link>
             </Button>
           </div>

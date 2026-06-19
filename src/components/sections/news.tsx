@@ -205,7 +205,7 @@ export function News() {
                 />
                 <button
                   type="submit"
-                  className="inline-flex h-11 items-center justify-center rounded-full bg-[#F6E91A] px-6 text-sm font-bold text-zinc-900 hover:brightness-95 transition"
+                  className="inline-flex h-11 items-center justify-center rounded-full bg-[#EBCA30] px-6 text-sm font-bold text-zinc-900 hover:brightness-95 transition"
                 >
                   Subscribe
                 </button>

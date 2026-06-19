@@ -11,9 +11,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-[#F6E91A] text-zinc-900 hover:bg-[#ede213] shadow-[0_8px_32px_-8px_rgba(246,233,26,0.5)] hover:shadow-[0_20px_60px_-10px_rgba(246,233,26,0.6)] active:scale-[0.98]",
+          "bg-[#EBCA30] text-zinc-900 hover:bg-[#d9b829] shadow-[0_8px_32px_-8px_rgba(235,202,48,0.5)] hover:shadow-[0_20px_60px_-10px_rgba(235,202,48,0.6)] active:scale-[0.98]",
         gradient:
-          "text-zinc-900 bg-[#F6E91A] hover:bg-[#ede213] shadow-[0_8px_32px_-8px_rgba(246,233,26,0.5)] active:scale-[0.98]",
+          "text-zinc-900 bg-[#EBCA30] hover:bg-[#d9b829] shadow-[0_8px_32px_-8px_rgba(235,202,48,0.5)] active:scale-[0.98]",
         ghost:
           "bg-transparent text-foreground hover:bg-wes-500/10 hover:text-wes-600 dark:hover:text-wes-400",
         glass:

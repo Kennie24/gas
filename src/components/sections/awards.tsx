@@ -26,7 +26,7 @@ export function Awards() {
               <div className="absolute inset-0 bg-black/20" />
               <div className="absolute bottom-4 left-4 right-4 border border-white/20 bg-black/35 p-4 text-white backdrop-blur-md sm:bottom-6 sm:left-6 sm:right-6 sm:p-5">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#F6E91A] text-[#1D8B43] sm:h-12 sm:w-12">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#EBCA30] text-[#1D8B43] sm:h-12 sm:w-12">
                     <Trophy className="h-6 w-6" />
                   </span>
                   <div>

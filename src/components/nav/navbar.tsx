@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { WesLogo } from "@/components/ui/wes-logo";
 // WesLogo used in mobile drawer header
 import { NAV_LINKS, COMPANY } from "@/data/company";
@@ -133,13 +132,8 @@ export function Navbar() {
             })}
           </ul>
 
-          <div className="absolute right-4 hidden items-center md:right-6 lg:right-8 md:flex">
-            <ThemeToggle />
-          </div>
-
           {/* mobile trigger */}
           <div className="absolute right-4 flex items-center gap-2 md:hidden">
-            <ThemeToggle />
             <button
               aria-label="Open menu"
               onClick={() => setOpen((v) => !v)}

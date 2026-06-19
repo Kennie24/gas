@@ -194,7 +194,7 @@ export function Team() {
               </p>
               <a
                 href="mailto:careers@wanaenergy.com"
-                className="mt-6 inline-flex h-11 items-center rounded-full bg-[#F6E91A] px-6 text-sm font-bold text-zinc-900 hover:brightness-95 transition"
+                className="mt-6 inline-flex h-11 items-center rounded-full bg-[#EBCA30] px-6 text-sm font-bold text-zinc-900 hover:brightness-95 transition"
               >
                 See open roles →
               </a>

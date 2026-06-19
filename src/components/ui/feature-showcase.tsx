@@ -108,7 +108,7 @@ export function FeatureShowcase({
             <Accordion type="single" collapsible defaultValue={steps[0]?.id} className="w-full">
               {steps.map((step) => (
                 <AccordionItem key={step.id} value={step.id} className="border-white/20">
-                  <AccordionTrigger className="text-left text-sm font-semibold text-white hover:text-[#F6E91A] hover:no-underline sm:text-base">
+                  <AccordionTrigger className="text-left text-sm font-semibold text-white hover:text-[#EBCA30] hover:no-underline sm:text-base">
                     {step.title}
                   </AccordionTrigger>
                   <AccordionContent className="text-xs leading-relaxed text-white/72 sm:text-sm">
@@ -162,7 +162,7 @@ export function FeatureShowcase({
                     <TabsTrigger
                       key={tab.value}
                       value={tab.value}
-                      className="rounded-md px-3 py-2 text-xs text-white/75 data-[state=active]:bg-[#F6E91A] data-[state=active]:text-zinc-900 sm:rounded-lg sm:px-4 sm:text-sm"
+                      className="rounded-md px-3 py-2 text-xs text-white/75 data-[state=active]:bg-[#EBCA30] data-[state=active]:text-zinc-900 sm:rounded-lg sm:px-4 sm:text-sm"
                     >
                       {tab.label}
                     </TabsTrigger>

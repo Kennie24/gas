@@ -149,7 +149,7 @@ export function HeroSection2({
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
               transition={{ duration: 0.55, delay: 0.3, ease: "easeOut" }}
-              className="block h-[3px] w-20 origin-left rounded-full bg-[#F6E91A]"
+              className="block h-[3px] w-20 origin-left rounded-full bg-[#EBCA30]"
             />
 
             {subtitle && (
@@ -171,7 +171,7 @@ export function HeroSection2({
               >
                 <Link
                   href={callToAction.href}
-                  className="group inline-flex items-center gap-2 rounded-full bg-[#F6E91A] px-5 py-3 text-xs font-semibold text-zinc-900 shadow-lg shadow-[#F6E91A]/30 transition-all duration-200 hover:bg-[#ede213] hover:shadow-[#F6E91A]/40 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6E91A] sm:px-7 sm:py-3.5 sm:text-sm"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#EBCA30] px-5 py-3 text-xs font-semibold text-zinc-900 shadow-lg shadow-[#EBCA30]/30 transition-all duration-200 hover:bg-[#d9b829] hover:shadow-[#EBCA30]/40 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EBCA30] sm:px-7 sm:py-3.5 sm:text-sm"
                 >
                   {callToAction.text}
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -229,7 +229,7 @@ export function HeroSection2({
                 onClick={() => setActiveSlide(index)}
                 aria-label={`Show hero image ${index + 1}`}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  activeSlide === index ? "w-8 bg-[#F6E91A]" : "w-2 bg-white/60 hover:bg-white"
+                  activeSlide === index ? "w-8 bg-[#EBCA30]" : "w-2 bg-white/60 hover:bg-white"
                 }`}
               />
             ))}

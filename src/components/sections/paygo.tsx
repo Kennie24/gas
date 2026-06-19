@@ -214,7 +214,7 @@ function PhoneMockup() {
 
           {/* Bottom CTA */}
           <div className="px-5 pb-5">
-            <button className="w-full rounded-xl bg-[#F6E91A] px-4 py-3 text-sm font-medium text-zinc-900 shadow-[0_8px_32px_-8px_rgba(246,233,26,0.5)]">
+            <button className="w-full rounded-xl bg-[#EBCA30] px-4 py-3 text-sm font-medium text-zinc-900 shadow-[0_8px_32px_-8px_rgba(235,202,48,0.5)]">
               Top up · Pay with MoMo
             </button>
           </div>

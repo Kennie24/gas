@@ -2,10 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/nav/navbar";
 import { Footer } from "@/components/sections/footer";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { COMPANY } from "@/data/company";
 
 const poppins = Poppins({
@@ -75,10 +73,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#020617" },
-  ],
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
@@ -91,17 +86,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${poppins.variable} ${poppinsDisplay.variable} ${mono.variable}`}
     >
       <body className="min-h-dvh bg-background text-foreground antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ScrollProgress />
-          <Navbar />
-          <main className="relative">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <Navbar />
+        <main className="relative">{children}</main>
+        <Footer />
       </body>
     </html>
   );

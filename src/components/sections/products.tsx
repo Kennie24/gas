@@ -124,7 +124,7 @@ export function Products() {
                     </div>
 
                     <div className="mt-auto flex flex-col gap-3 sm:flex-row">
-                      <Button asChild className="rounded-xl bg-[#F6E91A] text-zinc-950 hover:bg-[#F6E91A]/90">
+                      <Button asChild className="rounded-xl bg-[#EBCA30] text-zinc-950 hover:bg-[#d9b829]">
                         <Link href={`/products/${product.slug}`}>
                           View Details <ArrowUpRight className="h-4 w-4" />
                         </Link>

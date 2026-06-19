@@ -109,7 +109,7 @@ export function ProductTestimonials() {
                   aria-label={`Show testimonial ${i + 1}`}
                   className={cn(
                     "h-1.5 rounded-full transition-all",
-                    i === index ? "w-8 bg-[#F6E91A]" : "w-2.5 bg-white/30 hover:bg-white/60",
+                    i === index ? "w-8 bg-[#EBCA30]" : "w-2.5 bg-white/30 hover:bg-white/60",
                   )}
                 />
               ))}

@@ -43,15 +43,11 @@ export function Hero() {
       <HeroSection2
         slogan={`Uganda's leading clean energy utility · Since ${COMPANY.founded}`}
         title={heading}
-        subtitle={`WANA Energy Solutions delivers affordable LPG, solar systems, solar freezers and electric pressure cookers to homes, businesses and rural communities across ${COMPANY.coverage} — with daily Pay-As-You-Go financing built for every household.`}
+        subtitle={`Affordable LPG, solar systems, solar freezers and electric pressure cookers across ${COMPANY.coverage} — with daily PayGo financing for every household.`}
         callToAction={{ text: "GET STARTED", href: "/contact" }}
         backgroundImages={[
-          "/hero.gif",
-          "/LPG Cylinders.png",
-          "/Solar Home Systems.png",
-          "/Solar Freezers.png",
-          "/Electric Pressure Cookers.png",
-          "/pay as you go.png",
+          "/slide 1.png",
+          "/Slider 2.png",
         ]}
 
       >
