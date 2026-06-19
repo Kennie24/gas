@@ -6,8 +6,8 @@ import { Badge } from "@/components/ui/badge";
 
 export function Awards() {
   return (
-    <section id="awards" className="relative mt-12 overflow-hidden bg-background py-0 md:mt-24">
-      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+    <section id="awards" className="relative overflow-hidden bg-background py-0">
+      <div className="grid items-stretch lg:grid-cols-2">
           {/* Left: recognition image */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
@@ -44,23 +44,23 @@ export function Awards() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.75, delay: 0.1, ease: "easeOut" }}
-            className="max-w-xl px-5 py-12 sm:px-6 md:py-16 lg:px-0 lg:py-28 lg:pr-16 xl:pr-24"
+            className="h-full max-w-none bg-[#1D8B43] px-5 py-12 text-white sm:px-6 md:py-16 lg:flex lg:flex-col lg:justify-center lg:px-16 lg:py-28 xl:px-24"
           >
             <Badge
               icon={<Award className="h-3.5 w-3.5" />}
-              className="border-[#1D8B43]/25 bg-[#1D8B43]/10 text-[#1D8B43]"
+              className="w-fit border-white/25 bg-white/10 text-white"
             >
               National Recognition
             </Badge>
 
-            <h2 className="mt-5 font-display text-[2rem] font-semibold tracking-tight text-foreground text-balance md:text-5xl">
+            <h2 className="mt-5 max-w-xl font-display text-[2rem] font-semibold tracking-tight text-white text-balance md:text-5xl">
               Environmental Social Enterprise{" "}
-              <span className="text-[#1D8B43]">of the Year</span>
+              <span className="text-[#EBCA30]">of the Year</span>
             </h2>
 
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base md:mt-5 md:text-lg">
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base md:mt-5 md:text-lg">
               Awarded by the{" "}
-              <span className="font-semibold text-foreground">
+              <span className="font-semibold text-white">
                 Federation of Uganda Social Entrepreneurs (FUSE)
               </span>
               , recognising WANA Energy Solutions&rsquo; measurable impact on climate,
@@ -71,9 +71,9 @@ export function Awards() {
               {["Climate Action", "Clean Cooking", "Social Enterprise", "Rural Impact"].map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-3 rounded-xl border border-border bg-card p-3 text-sm font-medium text-foreground shadow-sm sm:rounded-2xl sm:p-4"
+                  className="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 p-3 text-sm font-medium text-white shadow-sm sm:rounded-2xl sm:p-4"
                 >
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#1D8B43]/10 text-[#1D8B43]">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#EBCA30] text-[#1D8B43]">
                     <Star className="h-4 w-4" />
                   </span>
                   {item}

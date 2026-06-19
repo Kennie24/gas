@@ -85,7 +85,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
       className={`${poppins.variable} ${poppinsDisplay.variable} ${mono.variable}`}
     >
-      <body className="min-h-dvh bg-background text-foreground antialiased">
+      <body
+        suppressHydrationWarning
+        className="min-h-dvh bg-background text-foreground antialiased"
+      >
         <Navbar />
         <main className="relative">{children}</main>
         <Footer />

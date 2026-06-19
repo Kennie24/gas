@@ -36,7 +36,7 @@ export function WESStoryScroll() {
         </p>
       </FlowSection>
 
-      <FlowSection aria-label="Clean cooking mission" style={{ backgroundColor: "#0F172A", color: "#fff" }}>
+      <FlowSection aria-label="Clean cooking mission" style={{ backgroundColor: "#EE6C22", color: "#fff" }}>
         <p className="text-xs font-bold uppercase tracking-[0.2em]">02 — Clean cooking utility</p>
         <Rule />
         <div>
